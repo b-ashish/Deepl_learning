@@ -8,7 +8,8 @@ from flask import Flask,render_template,redirect,request,url_for
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 
-
+import tensorflow as tf
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 app = Flask(__name__)
 
 #
