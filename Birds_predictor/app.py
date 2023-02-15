@@ -1,10 +1,8 @@
-
 import numpy as np
 import json
 import os
 import shutil
-import werkzeug
-import tensorflow
+import config
 from werkzeug.utils import secure_filename
 from flask import Flask,render_template,redirect,request,url_for
 from tensorflow.keras.models import load_model
@@ -16,9 +14,9 @@ app = Flask(__name__)
 #
 folder = 'uploads'
 # loading the classes using os module
-with open ('classes.json','rb') as f:
-    classes = json.load(f) 
-model_load = load_model('model.h5') #loading the model
+with open (config.class_os_path,'rb') as f:
+    classes = json.load(f)
+model_load = load_model(config.model_os_path) #loading the model
 
 #control the uploading file extension
 app.config['UPLOAD_FOLDER'] = 'uploads'
