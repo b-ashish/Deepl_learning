@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="eng">
+    
+    <h1 style="color: rgb(25, 10, 241); font-family: sans-serif;">
+      Bird predictor
+    </h1>
+    <fieldset style="width:0px">
+        <legend style="color:hsl(134, 89%, 47%);">INPUT DATA </legend>
+    
+        <link rel="stylesheet" href="style.css">
+       <body>
+        <div class="image">
+            <figure class="image-container">
+                <img id="choosen-image" src ="static\test_image.jpg" style="height: 100%;width: 100%;">
+                <figcaption id=" file-name">
+                    IMAGE PREVIEW
+                </figcaption>
+            </figure>
+
+            <script>
+                function previewFile() {
+                  var preview = document.querySelector('img');
+                  var file = document.querySelector('input[type=file]').files[0];
+                  var reader = new FileReader();
+          
+                  reader.addEventListener("load", function () {
+                    preview.src = reader.result;
+                  }, false);
+          
+                  if (file) {
+                    reader.readAsDataURL(file);
+                  }
+                }
+              </script>
+            <form action= "{{ url_for('upload')}}" method="post" enctype="multipart/form-data" onchange="previewFile()">
+            
+                <input style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif" class="upload" type="file" name="file">
+               <input type="submit" value="Predict" >
+            </form>
+        </div>
+       </body> 
+        
+ 
+    
+</html>
+
+
